@@ -5,4 +5,29 @@
 <a href="{% url 'cakes_update' cake.id %}">Edit</a>
 <a href="{% url 'cakes_delete' cake.id %}">Delete</a>
 
+<a href ="{% url 'add_recipe' cake.id %}">Add A Recipe</a>
+
+<h3>Recipes for {{ cake.name }}</h3>
+
+{% if recipes.count %}
+
+{% for recipe in recipes %}
+    <div class="card">
+        <div class="card-content">
+            <h4>
+                <!-- anchor tag linking to a details page for the recipe? -->
+                {{ recipe.title }}
+            </h4>
+            <p><strong>Description: </strong>{{ recipe.description}}</p>
+            <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
+        </div>
+    </div>
+{% endfor %}
+
+{% else %}
+<p>There are no recipes for this cake at the moment. Check again later!</p>
+
+
+{% endif %}
+
 {% endblock %}

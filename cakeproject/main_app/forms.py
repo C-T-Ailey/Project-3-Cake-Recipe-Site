@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        fields = ['title', 'ingredients', 'instructions', 'imageurl']
+        fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
+        success_message = "Recipe successfully created."
 
 
 # Custom Form for Sign-up - extending the UserCreationForm to include email address as a field:
