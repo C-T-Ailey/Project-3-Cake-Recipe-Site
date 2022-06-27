@@ -20,13 +20,13 @@
                     </ul>
     
                     <ul>
-                        <li><a href ="{% url 'home' %}" class="right">About</a></li>
-                        <li><a href ="{% url 'home' %}" class="right">Add a Cake</a></li>
-                        <li><a href ="{% url 'home' %}">View All Cakes</a></li>
-                        <li><a href ="{% url 'home' %}">Add A Recipe</a></li>
-                        <li><a href ="{% url 'home' %}">View All Recipes</a></li>
-                        <li><a href ="">Sign Up</a></li>
-                        <li><a href ="main_app/recipe_form.html">Log In</a></li>
+                        <li><a href ="{% url 'home' %}" class="right">Home</a></li>
+                        <li><a href ="{% url 'cakes_create' %}" class="right">Add a Cake</a></li>
+                        <li><a href ="{% url 'index' %}">View All Cakes</a></li>
+                        <li><a href ="{% url '' %}">Add A Recipe</a></li>
+                        <li><a href ="{% url '' %}">View All Recipes</a></li>
+                        <li><a href ="{% url 'signup' %}">Sign Up</a></li>
+                        <li><a href ="{% url 'login' %}">Log In</a></li>
                     </ul>
                 </div>
             </nav>
