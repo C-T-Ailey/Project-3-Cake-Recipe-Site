@@ -19,6 +19,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 class CakeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
+    success_message = "Cake successfully created."
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
@@ -26,6 +27,7 @@ class CakeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class CakeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
+    success_message = "Cake successfully updated."
     # def form_valid(self, form):
     #     form.instance.user = self.request.user
     #     return super().form_valid(form)
