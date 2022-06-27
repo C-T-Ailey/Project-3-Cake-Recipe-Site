@@ -9,28 +9,30 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, Pass
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
-
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 
 # Cake CRUD operations
 
-class CakeCreate(LoginRequiredMixin, CreateView):
+class CakeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
-class CakeUpdate(LoginRequiredMixin, UpdateView):
+class CakeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)
     
-class CakeDelete(LoginRequiredMixin, DeleteView):
+class CakeDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Cake
+    success_message = "Cake successfully deleted."
     success_url = '/cakes/'
 
 
@@ -45,7 +47,7 @@ def cakes_index(request):
 
 def cakes_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
-    return render(request, "cakes/details.html", {'cake': cake})
+    return render(request, "cakes/detail.html", {'cake': cake})
 
 
 # Authentication Views
@@ -59,9 +61,11 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, 'You successfully signed up and are now logged in.')
             return redirect('/')
         else:
-            error_message = "Invalid sign up - try again!"
+            messages.error(request, "Invalid sign up - try again.")
+            # error_message = "Invalid sign up - try again!"
     
     form = NewUserForm()
     context = {'form': form, 'error_message': error_message}
@@ -69,5 +73,10 @@ def signup(request):
 
 
 # Password Change - specifying success url redirect, otherwise will default to a URL with the name 'password_change_done' which will need a new view & template specified.
-class PasswordChange(PasswordChangeView):
-  success_url = '/'
+class PasswordChange(SuccessMessageMixin, PasswordChangeView):
+    success_message = "Password changed successfully."
+    success_url = '/'
+
+
+
+

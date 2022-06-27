@@ -16,7 +16,7 @@ class Cake(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse('', kwargs = {'cake_id': self.id})
+        return reverse('detail', kwargs = {'cake_id': self.id})
 
     def __str__(self):
         return f"{self.name}"
