@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, LoginView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -76,6 +76,7 @@ class PasswordChange(SuccessMessageMixin, PasswordChangeView):
     success_message = "Password changed successfully."
     success_url = '/'
 
-
+class LoginView(SuccessMessageMixin, LoginView):
+    success_message = "You have successfully logged in."
 
 

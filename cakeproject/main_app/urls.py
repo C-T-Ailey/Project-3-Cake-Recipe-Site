@@ -14,4 +14,5 @@ urlpatterns = [
     # Authentication Paths
     path('accounts/signup/', views.signup, name='signup'),
     path('accounts/password_change/', views.PasswordChange.as_view(), name='password_change'),
+    path('accounts/login/', views.LoginView.as_view(), name='login'),
 ]
