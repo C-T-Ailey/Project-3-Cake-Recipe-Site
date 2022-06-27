@@ -14,24 +14,22 @@ from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 # Create your views here.
 
 # Cake CRUD operations
-#class CakeCreate(LoginRequiredMixin, CreateView):
-class CakeCreate(CreateView):
+
+class CakeCreate(LoginRequiredMixin, CreateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-#class CakeUpdate(LoginRequiredMixin, UpdateView):
-class CakeUpdate(UpdateView):
+class CakeUpdate(LoginRequiredMixin, UpdateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
-#class CakeDelete(LoginRequiredMixin, DeleteView):
-class CakeDelete(DeleteView):
+class CakeDelete(LoginRequiredMixin, DeleteView):
     model = Cake
     success_url = '/cakes/'
 
