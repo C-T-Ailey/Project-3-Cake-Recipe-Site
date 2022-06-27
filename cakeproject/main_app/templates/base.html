@@ -15,12 +15,11 @@
         <header class="nav-bar fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <ul>
-                        <li><a href ="{% url 'home' %}" class="left brand logo">&nbsp;&nbsp;Home</a></li>
+                    <ul class="left brand-logo">
+                        <li><a href ="{% url 'home' %}" >&nbsp;&nbsp;Home</a></li>
                     </ul>
     
-                    <ul>
-                        <li><a href ="{% url 'home' %}" class="right">Home</a></li>
+                    <ul class="right">
                         <li><a href ="{% url 'cakes_create' %}" class="right">Add a Cake</a></li>
                         <li><a href ="{% url 'index' %}">View All Cakes</a></li>
                         <li><a href ="{% url 'home' %}">Add A Recipe</a></li>
@@ -31,6 +30,12 @@
                 </div>
             </nav>
         </header>
+
+        {% if messages %}
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        {% endif %}
         
         <main class="container">
             {% block content %}

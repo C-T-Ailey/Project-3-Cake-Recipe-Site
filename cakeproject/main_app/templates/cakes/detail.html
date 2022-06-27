@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'cakes_update' cake.id %}">Edit</a>
+<a href="{% url 'cakes_delete' cake.id %}">Delete</a>
+
+{% endblock %}
