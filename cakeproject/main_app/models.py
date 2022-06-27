@@ -22,7 +22,7 @@ class Cake(models.Model):
         return f"{self.name}"
 
 class Recipe(models.Model):
-    title: models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
     ingredients = models.TextField(max_length=500)
     instructions = models.TextField(max_length=500)
     imageurl = models.CharField(default=None, blank=True, max_length=300, null=True)
