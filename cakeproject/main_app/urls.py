@@ -9,7 +9,10 @@ urlpatterns = [
     path('cakes/<int:pk>/update', views.CakeUpdate.as_view(), name='cakes_update'),
     path('cakes/<int:pk>/delete', views.CakeDelete.as_view(), name='cakes_delete'),
 
-    #path('cakes/<int:pk>/add_recipe', views.add_recipe, name='add_recipe'),
+    # Recipe
+    #path('recipes/', views.RecipeList.as_view(), name='recipe_index'),
+    #path('recipes/<int:pk>/', views.RecipeDetail.as_view(), name='recipe_detail'),
+    path('cakes/<int:cake_id>/add_recipe', views.RecipeCreate.as_view(), name='add_recipe'),
 
     # Authentication Paths
     path('accounts/signup/', views.signup, name='signup'),

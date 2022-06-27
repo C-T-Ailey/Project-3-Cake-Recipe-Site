@@ -23,11 +23,12 @@ class Cake(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=100)
+    description = models.CharField(max_length=250, null=True)
     ingredients = models.TextField(max_length=500)
     instructions = models.TextField(max_length=500)
     imageurl = models.CharField(default=None, blank=True, max_length=300, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_date = models.DateField("Date Added")
+    created_date = models.DateTimeField(auto_now_add=True)
     cake = models.ForeignKey(Cake, on_delete=models.CASCADE)
 
     def __str__(self):

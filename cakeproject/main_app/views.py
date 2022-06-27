@@ -48,6 +48,37 @@ def cakes_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
     return render(request, "cakes/detail.html", {'cake': cake})
 
+"""class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Recipe
+    fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
+    success_message = "Recipe successfully created."
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.instance.cake = self.request.cake_id
+        return super().form_valid(form)"""
+
+"""@login_required
+def add_feeding(request, cat_id):
+    # where req.body in express represented the posted form data, django uses request.POST
+    form = FeedingForm(request.POST)
+    print(form)
+    if form.is_valid():
+        # Collect the data, but do not commit it to the DB
+        new_feeding = form.save(commit=False)
+        # sets the cat_id value of cat_id passed from the form(?)
+        new_feeding.cat_id = cat_id
+        # save to db
+        new_feeding.save()
+        return redirect('detail', cat_id = cat_id)"""
+
+def add_recipe(request, cake_id):
+    form = RecipeForm(request.POST)
+    print(form)
+    if form.is_valid():
+        new_recipe = form.save(commit = False)
+        new_recipe.cake_id = cake_id
+        new_recipe.save()
+        return redirect('detail', cake_id = cake_id)
 
 # Authentication Views
 
