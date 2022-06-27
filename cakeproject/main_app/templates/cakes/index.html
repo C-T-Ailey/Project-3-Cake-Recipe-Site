@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> The Cake Cupboard</h1>
+
+{% for cake in cakes %}
+
+    <a href="{% url 'detail' cake.id %}">
+        <div>
+            <div>
+                <div>
+                    <h3>{{ cake.name }}</h3>
+                </div>
+                <p>Main Flavours: {{ cake.flavours }}</p>
+                <p>Description: {{ cake.description }}</p>
+                <p>Added by: </p>
+            </div>
+
+            <div>
+                <a href="{{ cake.imageurl }}">
+                    <img src="{{ cake.imageurl }}">
+                </a>
+            </div>
+        </div>
+    </a>
+
+{% endfor %}
+
+{% endblock %}
