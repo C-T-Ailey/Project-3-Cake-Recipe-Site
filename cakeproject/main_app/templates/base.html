@@ -11,8 +11,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    {% block content %}
+    <body>
+        <header class="nav-bar fixed">
+            <nav>
+                <div class="nav-wrapper">
+                    <ul>
+                        <li><a href ="{% url 'home' %}" class="left brand logo">&nbsp;&nbsp;Home</a></li>
+                    </ul>
+    
+                    <ul>
+                        <li><a href ="{% url 'home' %}" class="right">About</a></li>
+                        <li><a href ="{% url 'home' %}" class="right">Add a Cake</a></li>
+                        <li><a href ="{% url 'home' %}">View All Cakes</a></li>
+                        <li><a href ="{% url 'home' %}">Add A Recipe</a></li>
+                        <li><a href ="{% url 'home' %}">View All Recipes</a></li>
+                        <li><a href ="main_app/cake_form.html">Sign Up</a></li>
+                        <li><a href ="main_app/recipe_form.html">Log In</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main class="container">
+            {% block content %}
 
-    {% endblock %}    
+            {% endblock %}
+        </main>
+    
+        <footer class="page-footer">
+            <div class="right">
+                All Rights Reserved, &nbsp; 2022 Cakes Unlimited
+            </div>
+    
+        </footer>
+    </body>
 </body>
 </html>
