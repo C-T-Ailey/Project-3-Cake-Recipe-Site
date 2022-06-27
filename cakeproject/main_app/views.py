@@ -19,15 +19,12 @@ class CakeCreate(LoginRequiredMixin, CreateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
 class CakeUpdate(LoginRequiredMixin, UpdateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
     
 class CakeDelete(LoginRequiredMixin, DeleteView):
     model = Cake
@@ -45,7 +42,7 @@ def cakes_index(request):
 
 def cakes_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
-    return render(request, "cakes/details.html", {'cake': cake})
+    return render(request, "cakes/detail.html", {'cake': cake})
 
 
 # Authentication Views
