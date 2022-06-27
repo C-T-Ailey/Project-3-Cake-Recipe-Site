@@ -10,4 +10,8 @@ urlpatterns = [
     path('cakes/<int:pk>/delete', views.CakeDelete.as_view(), name='cakes_delete'),
 
     #path('cakes/<int:pk>/add_recipe', views.add_recipe, name='add_recipe'),
+
+    # Authentication Paths
+    path('accounts/signup/', views.signup, name='signup'),
+    path('accounts/password_change/', views.PasswordChange.as_view(), name='password_change'),
 ]
