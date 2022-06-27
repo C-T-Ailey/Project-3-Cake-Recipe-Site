@@ -28,9 +28,6 @@ class CakeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Cake
     fields = ['name', 'flavours', 'description', 'imageurl']
     success_message = "Cake successfully updated."
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     return super().form_valid(form)
     
 class CakeDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Cake
