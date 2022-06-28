@@ -57,6 +57,15 @@ def cakes_index(request):
 #     recipe_form = RecipeForm
 #     return render(request, "cakes/detail.html", {'cake': cake, 'recipe_form': recipe_form})
 
+#adding RECIPE CRUD OPERATIONS - RecipeUpdate view, Richard 28/6/22
+class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Recipe
+    fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
+    success_message = "Recipe Successfully Updated."
+    
+
+
+#Richard uncommented this class 28/6/22
 # class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 #     model = Recipe
 #     fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']

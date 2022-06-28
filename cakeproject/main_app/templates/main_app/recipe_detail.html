@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ cake.name }}
+{{ recipe.name }}
 {% endblock %}
 
 {% block content %}
+<title> Recipe Details</title>
+<h2>{{recipe.name}} Details</h2>
 
-<h2>{{cake.name}} Details</h2>
-<p>Flavours: {{cake.flavours}} </p>
-<p>Description: {{cake.description}} </p>
+<p>Description: {{recipe.description}} </p>
 <hr>
-<p>Added by: {{cake.created_by}}</p>
+<p>Added by: {{recipe.created_by}}</p>
 <br>
 <hr>
 <br>
 
 {% if user.id == cake.created_by.id %}
-<a href="{% url 'cakes_update' cake.id %}">Edit Cake</a>
-<a href="{% url 'cakes_delete' cake.id %}">Delete Cake</a>
+<a href="{% url 'recipes_update' cake.id %}">Edit Cake</a>
+<a href="{% url 'recipes_delete' cake.id %}">Delete Cake</a>
 {% endif %}
 
 {% if user.is_authenticated %}
@@ -56,7 +56,7 @@
             </div>
             {% if user.id == recipe.created_by.id %}
             <div class="card-action">
-                <a href="{% url 'recipes_update' recipe.id %}">Edit</a>
+                <a href="#">Edit</a>
                 <a href="#">Delete</a>
             </div>
             {% endif %}
