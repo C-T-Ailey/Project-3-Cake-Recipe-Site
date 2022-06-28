@@ -5,6 +5,7 @@ from .forms import NewUserForm, RecipeForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMixin
 from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.list import MultipleObjectMixin
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
@@ -12,6 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, LoginView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -50,7 +52,11 @@ def home(request):
 
 def cakes_index(request):
     cakes = Cake.objects.all()
-    return render(request, 'cakes/index.html', {'cakes': cakes})
+    paginator = Paginator(cakes, 3)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'cakes/index.html', {'page_obj': page_obj})
 
 # def cakes_detail(request, pk):
 #     cake = Cake.objects.get(id=pk)
