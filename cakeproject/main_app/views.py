@@ -10,7 +10,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, LoginView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, LoginView, LogoutView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator
@@ -86,6 +86,7 @@ def add_feeding(request, cat_id):
         new_feeding.save()
         return redirect('detail', cat_id = cat_id)"""
 
+@login_required
 def add_recipe(request, pk):
     form = RecipeForm(request.POST)
     print(form)
@@ -94,14 +95,13 @@ def add_recipe(request, pk):
         new_recipe.cake_id = pk
         form.instance.created_by = request.user
         new_recipe.save()
+        messages.success(request, f"Recipe successfully added.")
         return redirect('detail', pk = pk)
 
 # Authentication Views
 
 # Signup View - using new custom form in forms.py called NewUserForm to allow for email input on signup
 def signup(request):
-    error_message = ''
-
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -111,11 +111,9 @@ def signup(request):
             return redirect('/')
         else:
             messages.error(request, "Invalid sign up - try again.")
-            # error_message = "Invalid sign up - try again!"
     
     form = NewUserForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 # Password Change - specifying success url redirect, otherwise will default to a URL with the name 'password_change_done' which will need a new view & template specified.
@@ -124,6 +122,14 @@ class PasswordChange(SuccessMessageMixin, PasswordChangeView):
     success_url = '/'
 
 class LoginView(SuccessMessageMixin, LoginView):
-    success_message = "You have successfully logged in."
+    def form_valid(self, form):
+            messages.success(self.request, f"You have successfully logged in!")
+            return super().form_valid(form)
+
+class LogoutView(LoginRequiredMixin, SuccessMessageMixin, LogoutView):
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.info(request, "You have successfully logged out.")
+        return super().dispatch(request, *args, **kwargs)
 
 
