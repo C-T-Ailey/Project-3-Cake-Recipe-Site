@@ -52,10 +52,10 @@ def cakes_index(request):
     cakes = Cake.objects.all()
     return render(request, 'cakes/index.html', {'cakes': cakes})
 
-def cakes_detail(request, pk):
-    cake = Cake.objects.get(id=pk)
-    recipe_form = RecipeForm
-    return render(request, "cakes/detail.html", {'cake': cake, 'recipe_form': recipe_form})
+# def cakes_detail(request, pk):
+#     cake = Cake.objects.get(id=pk)
+#     recipe_form = RecipeForm
+#     return render(request, "cakes/detail.html", {'cake': cake, 'recipe_form': recipe_form})
 
 # class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 #     model = Recipe

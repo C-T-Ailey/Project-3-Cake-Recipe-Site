@@ -42,18 +42,30 @@
 <br>
 <h3>Recipes for {{ cake.name }}</h3>
 
-{% for recipe in cake.recipe_set.all %}
-    <div class="card">
-        <div class="card-content">
-            <h4>
-                {{ recipe.title }}
-            </h4>
-            <p><strong>Description: </strong>{{ recipe.description}}</p>
-            <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
-        </div>
-    </div>
-{% endfor %}
 
+{% if cake.recipe_set.all %}
+
+    {% for recipe in cake.recipe_set.all %}
+        <div class="card">
+            <div class="card-content">
+                <h4>
+                    {{ recipe.title }}
+                </h4>
+                <p><strong>Description: </strong>{{ recipe.description}}</p>
+                <p>Added by {{ recipe.created_by }} on {{ recipe.created_date }}.</p>
+            </div>
+            {% if user.id == recipe.created_by.id %}
+            <div class="card-action">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+{% else %}
+    <p>No recipes yet</p>
+{% endif %}
 
 
 {% endblock %}
