@@ -15,6 +15,7 @@ urlpatterns = [
     #path('recipes/<int:pk>/', views.RecipeDetail.as_view(), name='recipe_detail'),
     # path('cakes/<int:cake_id>/add_recipe', views.RecipeCreate.as_view(), name='add_recipe'),
     path('cakes/<int:pk>/add_recipe', views.add_recipe, name='add_recipe'),
+    path('cakes/<int:pk>/delete_recipe', views.RecipeDelete.as_view(), name='delete_recipe'),
 
     # Authentication Paths
     path('accounts/signup/', views.signup, name='signup'),

@@ -12,6 +12,6 @@ Delete Recipe
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="btn red">
-    <p><a href="{% url 'detail' cake.id %}">Cancel</a></p>
+    <p><a href="{% url 'detail' recipe.cake_id %}">Cancel</a></p>
   </form>
 {% endblock %}

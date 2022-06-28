@@ -57,7 +57,7 @@
             {% if user.id == recipe.created_by.id %}
             <div class="card-action">
                 <a href="#">Edit</a>
-                <a href="#">Delete</a>
+                <a href="{% url 'delete_recipe' cake.id %}">Delete</a>
             </div>
             {% endif %}
         </div>

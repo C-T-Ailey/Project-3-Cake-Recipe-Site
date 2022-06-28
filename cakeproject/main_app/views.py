@@ -98,6 +98,12 @@ def add_recipe(request, pk):
         messages.success(request, f"Recipe successfully added.")
         return redirect('detail', pk = pk)
 
+class RecipeDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Recipe
+    success_message = "Recipe successfully deleted."
+    success_url = '/cakes/'
+    
+
 # Authentication Views
 
 # Signup View - using new custom form in forms.py called NewUserForm to allow for email input on signup
