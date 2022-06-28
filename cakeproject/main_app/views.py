@@ -1,20 +1,28 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Cake, Recipe
-from .forms import NewUserForm
+from .forms import NewUserForm, RecipeForm
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMixin
+from django.views.generic.detail import SingleObjectMixin
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView, LoginView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 
 # Cake CRUD operations
+
+class CakeDetail(DetailView):
+    model = Cake
+    def get_context_data(self, **kwargs):
+        context = super(CakeDetail, self).get_context_data(**kwargs)
+        context['form'] = RecipeForm
+        return context
 
 class CakeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Cake
@@ -44,19 +52,19 @@ def cakes_index(request):
     cakes = Cake.objects.all()
     return render(request, 'cakes/index.html', {'cakes': cakes})
 
-def cakes_detail(request, cake_id):
-    cake = Cake.objects.get(id=cake_id)
-    return render(request, "cakes/detail.html", {'cake': cake})
+# def cakes_detail(request, pk):
+#     cake = Cake.objects.get(id=pk)
+#     recipe_form = RecipeForm
+#     return render(request, "cakes/detail.html", {'cake': cake, 'recipe_form': recipe_form})
 
-class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = Recipe
-    fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
-    success_message = "Recipe successfully created."
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        form.instance.cake = self.request.cake_id
-        return super().form_valid(form)
-
+# class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+#     model = Recipe
+#     fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
+#     success_message = "Recipe successfully created."
+#     def form_valid(self, form):
+#         form.instance.created_by = self.request.user
+#         form.instance.cake = self.request.cake_id
+#         return super().form_valid(form)
 
 """@login_required
 def add_feeding(request, cat_id):
@@ -72,14 +80,15 @@ def add_feeding(request, cat_id):
         new_feeding.save()
         return redirect('detail', cat_id = cat_id)"""
 
-def add_recipe(request, cake_id):
+def add_recipe(request, pk):
     form = RecipeForm(request.POST)
     print(form)
     if form.is_valid():
         new_recipe = form.save(commit = False)
-        new_recipe.cake_id = cake_id
+        new_recipe.cake_id = pk
+        form.instance.created_by = request.user
         new_recipe.save()
-        return redirect('detail', cake_id = cake_id)
+        return redirect('detail', pk = pk)
 
 # Authentication Views
 
@@ -108,6 +117,7 @@ class PasswordChange(SuccessMessageMixin, PasswordChangeView):
     success_message = "Password changed successfully."
     success_url = '/'
 
-
+class LoginView(SuccessMessageMixin, LoginView):
+    success_message = "You have successfully logged in."
 
 
