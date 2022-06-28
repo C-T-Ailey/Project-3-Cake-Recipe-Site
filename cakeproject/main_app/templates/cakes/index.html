@@ -9,26 +9,33 @@ View All Cakes
 <h1> The Cake Cupboard</h1>
 
 {% for cake in cakes %}
+    
+    <div class="card">
+        <h3>{{ cake.name }}</h3>
 
     <a href="{% url 'detail' cake.id %}">
-        <div>
-            <div>
+        <div class="card-content">
+            <div class="flex-container">
                 <div>
-                    <h3>{{ cake.name }}</h3>
-                </div>
+                
                 <p>Main Flavours: {{ cake.flavours }}</p>
                 <p>Description: {{ cake.description }}</p>
+
                 <p>Added by: {{ cake.created_by }} </p>
             </div>
 
-            <div>
-                <a href="{{ cake.imageurl }}">
-                    <img src="{{ cake.imageurl }}">
-                </a>
+                <div class="right">
+                <img src="{{cake.imageurl}}" id="cakeImage"/>
             </div>
-        </div>
-    </a>
+        </div>    
+        
 
+    </a>
+</div>
+</div>
+
+
+    
 {% endfor %}
 
 {% endblock %}
