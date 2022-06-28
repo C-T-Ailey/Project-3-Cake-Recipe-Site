@@ -48,14 +48,15 @@ def cakes_detail(request, cake_id):
     cake = Cake.objects.get(id=cake_id)
     return render(request, "cakes/detail.html", {'cake': cake})
 
-"""class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Recipe
     fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
     success_message = "Recipe successfully created."
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         form.instance.cake = self.request.cake_id
-        return super().form_valid(form)"""
+        return super().form_valid(form)
+
 
 """@login_required
 def add_feeding(request, cat_id):

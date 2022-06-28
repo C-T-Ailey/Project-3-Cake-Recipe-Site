@@ -6,3 +6,12 @@
     color: #880e4f pink darken-4;
 }
 
+.flex-container{
+   display: flex; 
+   align-content: space-between;
+}
+
+#cakeImage{
+max-width: 250px;
+height: 200px;
+}
