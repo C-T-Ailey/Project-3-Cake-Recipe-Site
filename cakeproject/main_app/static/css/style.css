@@ -16,3 +16,22 @@ main {
     color: #880e4f pink darken-4;
 }
 
+.popup {
+    display: none;
+    /* background-color: #ad1457;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    border: solid black 2px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    z-index: 1000;
+    box-shadow:
+        1.4px 3.1px 3px -2px rgba(0, 0, 0, 0.09),
+        3.6px 7.8px 7.5px -2px rgba(0, 0, 0, 0.129),
+        7.3px 15.9px 15.2px -2px rgba(0, 0, 0, 0.161),
+        15px 32.9px 31.4px -2px rgba(0, 0, 0, 0.2),
+        41px 90px 86px -2px rgba(0, 0, 0, 0.29)
+    ; */
+}

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+View All Cakes
+{% endblock %}
+
 {% block content %}
 
 <h1> The Cake Cupboard</h1>
@@ -14,7 +18,7 @@
                 </div>
                 <p>Main Flavours: {{ cake.flavours }}</p>
                 <p>Description: {{ cake.description }}</p>
-                <p>Added by: </p>
+                <p>Added by: {{ cake.created_by }} </p>
             </div>
 
             <div>
