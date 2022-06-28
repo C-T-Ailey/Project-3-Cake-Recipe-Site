@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse
 from .models import Cake, Recipe
 from .forms import NewUserForm, RecipeForm
@@ -63,6 +64,15 @@ def cakes_index(request):
 #     recipe_form = RecipeForm
 #     return render(request, "cakes/detail.html", {'cake': cake, 'recipe_form': recipe_form})
 
+#adding RECIPE CRUD OPERATIONS - RecipeUpdate view, Richard 28/6/22
+class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Recipe
+    fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
+    success_message = "Recipe Successfully Updated."
+    
+
+
+#Richard uncommented this class 28/6/22
 # class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 #     model = Recipe
 #     fields = ['title', 'description', 'ingredients', 'instructions', 'imageurl']
@@ -101,6 +111,7 @@ def add_recipe(request, pk):
 class RecipeDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Recipe
     success_message = "Recipe successfully deleted."
+    #success_url = reverse_lazy('detail', kwargs = {'pk': model.cake_id})
     success_url = '/cakes/'
     
 
