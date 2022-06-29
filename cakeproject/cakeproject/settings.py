@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main_app',
+    'bulma',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,6 +55,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cakeproject.urls'
+ROOT_PATH = os.path.dirname(__file__)
+STATICFILES_DIRS=[(os.path.join(BASE_DIR,'static'))]
+
+
 
 TEMPLATES = [
     {
