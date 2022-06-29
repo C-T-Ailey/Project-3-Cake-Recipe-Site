@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bulma_tags %}
 
 {% block title %}
     {% if object  %}
@@ -20,7 +21,7 @@
         {% csrf_token %}
 
         <table>
-            {{ form.as_table }}
+            {{ form|bulma }}
         </table>
 
         <input type="submit" value="submit" class="btn">

@@ -65,7 +65,7 @@ def cakes_index(request):
     # cakes = all established Cake objects in the DB
     cakes = Cake.objects.all()
     # initializes the paginator and asserts that there must be 3 cakes to a page
-    paginator = Paginator(cakes, 3)
+    paginator = Paginator(cakes, 4)
     # defines the page number of the currently accessed page of cakes
     page_number = request.GET.get('page')
     # defines the contents of the currently accessed page of cakes
