@@ -7,7 +7,7 @@
 {% block content %}
 
 <h2>{{cake.name}} Details</h2>
-<p>Flavours: {{cake.flavours}} </p>
+<p>Primary Flavour: {{cake.get_flavours_display}} </p>
 <p>Description: {{cake.description}} </p>
 <hr>
 <p>Added by: {{cake.created_by}}</p>
