@@ -1,7 +1,7 @@
 body {
     display: flex;
     min-height: 100vh;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 
 main {
@@ -22,10 +22,17 @@ main {
   flex-wrap: wrap;
 }
 
-.test {
-  background-color: #880e4f;
-  width: 100px;
-  height: 100px;
+.pagination-container {
+  display: flex;
+}
+
+.section--form {
+  background-color: #E4C1F9;
+}
+
+.form-content {
+  background-color: white;
+  padding: 40px;
 }
 
 /*
