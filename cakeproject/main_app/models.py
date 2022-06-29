@@ -4,20 +4,20 @@ from datetime import date
 from django.contrib.auth.models import User
 
 FLAVOURS = (
-    ('0', 'Plain Sponge'),
-    ('1', 'Caramel'),
-    ('2', 'Chocolate'),
-    ('3', 'Cream Cheese'),
-    ('4', 'Fruit'),
-    ('5', 'Spiced'),
-    ('6', 'Vanilla'),
-    ('7', 'Experimental')
+    ('#f4f0d2', 'Plain Sponge'),
+    ('#e8b26b', 'Caramel'),
+    ('#543e28', 'Chocolate'),
+    ('#fff3c9', 'Cream Cheese'),
+    ('#fad2e6', 'Fruit'),
+    ('#d48c55', 'Spiced'),
+    ('#fffeeb', 'Vanilla'),
+    ('#f1b0ff', 'Experimental')
 )
 # Create your models here.
 
 class Cake(models.Model):
     name = models.CharField(max_length=100)
-    flavours = models.CharField(max_length=20, choices=FLAVOURS, default=FLAVOURS[0][0])
+    flavours = models.CharField(max_length=7, choices=FLAVOURS, default=FLAVOURS[0][0])
     description = models.TextField(max_length=250)
     imageurl = models.CharField(default=None, blank=True, max_length=300, null=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
