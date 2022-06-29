@@ -112,7 +112,8 @@ class RecipeDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Recipe
     success_message = "Recipe successfully deleted."
     #success_url = reverse_lazy('detail', kwargs = {'pk': model.cake_id})
-    success_url = '/cakes/'
+    def get_success_url(self):
+        return reverse('detail', kwargs={'pk' : self.object.cake_id})
     
 
 # Authentication Views
