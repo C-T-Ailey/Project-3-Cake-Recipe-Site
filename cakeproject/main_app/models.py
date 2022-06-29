@@ -36,3 +36,6 @@ class Recipe(models.Model):
 
     class Meta:
         ordering = ['created_date']
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs = {'pk': self.cake_id})

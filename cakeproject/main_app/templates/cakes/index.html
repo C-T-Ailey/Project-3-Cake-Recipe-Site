@@ -8,33 +8,57 @@ View All Cakes
 
 <h1> The Cake Cupboard</h1>
 
-{% for cake in cakes %}
+{% for cake in page_obj %}
+    
+<a href="{% url 'detail' cake.id %}">
     
     <div class="card">
         <h3>{{ cake.name }}</h3>
-
-    <a href="{% url 'detail' cake.id %}">
+        <hr>
         <div class="card-content">
             <div class="flex-container">
                 <div>
+                    <p>Main Flavours: {{ cake.flavours }}</p>
+                    <p>Description: {{ cake.description }}</p>
+                    <p>Added by: {{ cake.created_by }} </p>
+                </div>
                 
-                <p>Main Flavours: {{ cake.flavours }}</p>
-                <p>Description: {{ cake.description }}</p>
-                <p>Added by: {{ cake.created_by }} </p>
-            </div>
-
                 <div class="right">
-                <img src="{{cake.imageurl}}" id="cakeImage"/>
-            </div>
-        </div>    
-        
+                    <a><img src="{{ cake.imageurl }}" id="cakeImage"/></a>
+                </div>
+            </div>    
+        </div> 
+    </div>          
+</a>
 
-    </a>
-</div>
-</div>
-
-
-    
 {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            ||
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% else %}
+            &laquo; first
+            ||
+            previous
+        {% endif %}
+
+        <span class="current">
+            || Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ||
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            ||
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% else %}
+            next
+            ||
+            last &raquo;
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}

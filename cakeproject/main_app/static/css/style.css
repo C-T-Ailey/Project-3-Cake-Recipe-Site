@@ -16,15 +16,16 @@ main {
     color: #880e4f pink darken-4;
 }
 
-.flex-container{
+.flex-container {
    display: flex; 
-   align-content: space-between;
+   justify-content: space-between;
 }
 
-#cakeImage{
-max-width: 250px;
-height: 200px;
+#cakeImage {
+  max-width: 250px;
+  height: 200px;
 }
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
