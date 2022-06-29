@@ -24,8 +24,12 @@ class CakeDetail(DetailView):
     model = Cake
     def get_context_data(self, **kwargs):
         context = super(CakeDetail, self).get_context_data(**kwargs)
+        page = self.request.GET.get('page')
+        paginator = Paginator(Recipe.objects.filter(cake=self.get_object()).order_by('created_date'), 3)
+        context['page_obj'] = paginator.get_page(page)
         context['form'] = RecipeForm
         return context
+
 
 class CakeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Cake
@@ -54,7 +58,6 @@ def home(request):
 def cakes_index(request):
     cakes = Cake.objects.all()
     paginator = Paginator(cakes, 3)
-
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'cakes/index.html', {'page_obj': page_obj})
