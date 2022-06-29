@@ -23,10 +23,16 @@ from django.core.paginator import Paginator
 class CakeDetail(DetailView):
     model = Cake
     def get_context_data(self, **kwargs):
+        # Defines the context as the CakeDetail view being accessed
         context = super(CakeDetail, self).get_context_data(**kwargs)
+        # Fetches the currently-accessed page of paginated objects
         page = self.request.GET.get('page')
+        # Initializes the paginator, sets the paginated objects to a list of Recipes attributed to the currently-accessed Cake, 
+        # orders the filtered list by the date of creation, and asserts 3 Recipes per page
         paginator = Paginator(Recipe.objects.filter(cake=self.get_object()).order_by('created_date'), 3)
+        # declares that any use of "page_obj" in the relevant template is equated to the current page of Recipes
         context['page_obj'] = paginator.get_page(page)
+        # declares that any use of 'form' in the relevant template is equated to the RecipeForm CBV
         context['form'] = RecipeForm
         return context
 
@@ -56,10 +62,15 @@ def home(request):
     return render(request, 'home.html')
 
 def cakes_index(request):
+    # cakes = all established Cake objects in the DB
     cakes = Cake.objects.all()
+    # initializes the paginator and asserts that there must be 3 cakes to a page
     paginator = Paginator(cakes, 3)
+    # defines the page number of the currently accessed page of cakes
     page_number = request.GET.get('page')
+    # defines the contents of the currently accessed page of cakes
     page_obj = paginator.get_page(page_number)
+    # renders the cakes index and passes the page_obj variable to any use of 'page_obj' in the template
     return render(request, 'cakes/index.html', {'page_obj': page_obj})
 
 # def cakes_detail(request, pk):
