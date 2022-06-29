@@ -10,7 +10,8 @@ FLAVOURS = (
     ('3', 'Cream Cheese'),
     ('4', 'Fruit'),
     ('5', 'Spiced'),
-    ('6', 'Vanilla')
+    ('6', 'Vanilla'),
+    ('7', 'Experimental')
 )
 # Create your models here.
 
