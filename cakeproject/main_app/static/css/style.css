@@ -2,10 +2,12 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    
 }
 
 main {
     flex: 1 0 auto;
+    /* background-color: #E4C1F9; */
 }
 
 .nav-bar-fixed{
@@ -30,16 +32,11 @@ main {
   background-color: #E4C1F9;
 }
 
-.form-content {
-  background-color: white;
-  padding: 40px;
+.cake-index {
+  display: flex;
+  flex-direction: row;
 }
 
-/*
-#cakeImage {
-  max-width: 250px;
-  height: 200px;
-} */
 
 .modal {
     display: none; /* Hidden by default */

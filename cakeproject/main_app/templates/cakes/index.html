@@ -9,45 +9,49 @@ View All Cakes
 <section class="hero is-primary">
     <div class="hero-body">
         <p class="title">
-          The Cake Cupboard
+          Cake Sera Sera
         </p>
         <p class="subtitle">
-          Hero subtitle
+          Whatever will be, we'll bake
         </p>
       </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <div class="content">
-            <div class="flex-container">
+        <div class="container columns is-multiline">
 
-                {% for cake in page_obj %}
-                
-                <a href="{% url 'detail' cake.id %}" style="text-decoration: none; color: black">
-                    
-                    <div class="card">
+            {% for cake in page_obj %}
+            
+            
+            <div class="column is-half">
+                <div class="card m-3">
+                    <a href="{% url 'detail' cake.id %}" style="text-decoration: none; color: black">
                         <div class="card-image">
-                            <figure class="image is-128x128">
+                            <figure class="image">
                                 <img src="{{ cake.imageurl }}" id="cakeImage"/>
                             </figure>
                         </div>
+                    
                         <div class="card-content" style="background-color: {{ cake.flavours }}">
                             <p class="title is-4">
                                 {{ cake.name }}
                             </p>
                             <div class="content">
-                                <p><b>Primary Flavour:</b> {{ cake.get_flavours_display }}</p>
-                                <p><b>Description:</b> {{ cake.description }}</p>
+                                <p><b>Primary Flavour:</b> 
+                                    <br>{{ cake.get_flavours_display }}</p>
+                                <p><b>Description:</b> 
+                                    <br>{{ cake.description }}</p>
                             </div>
                         </div>
-                    </div>          
-                </a>
-
-                {% endfor %}
-
+                    </a>
+                </div> 
             </div>
+
+            {% endfor %}
+
         </div>
+        <br>
         <div class="pagination-container">
             <nav class="pagination is-centered" role="navigation" aria-label="pagination">
                 <span class="step-links">
@@ -72,7 +76,7 @@ View All Cakes
                     {% endif %}
                 </span>
             </nav>
-        </div>
+        </div>            
     </div>
 </section>
 

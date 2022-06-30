@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 FLAVOURS = (
     ('#f4f0d2', 'Plain Sponge'),
     ('#e8b26b', 'Caramel'),
-    ('#543e28', 'Chocolate'),
+    ('#d4a373', 'Chocolate'),
     ('#fff3c9', 'Cream Cheese'),
     ('#fad2e6', 'Fruit'),
     ('#d48c55', 'Spiced'),
