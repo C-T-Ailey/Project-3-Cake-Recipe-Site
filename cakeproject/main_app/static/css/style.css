@@ -12,8 +12,18 @@ main {
   background-color: #D0F4DE;
 }
 
-.navbar-menu ul {
+.navbar-menu {
   margin-top: 5px;
+}
+
+.greeting {
+  pointer-events: none;
+}
+
+#head-title {
+  position: relative;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
 }
 
 footer {
@@ -49,12 +59,16 @@ footer {
   border-radius: 2%/5%;
 }
 
+.cont1 {
+  height: 500px
+}
+
 #splash {
   background-image: url("../images/cupcake-splash-cropped.jpeg");
   background-size: contain;
 }
 
-.splash-text {
+.title {
   position: relative;
   text-align: center;
   top: 50%;
