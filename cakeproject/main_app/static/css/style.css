@@ -8,12 +8,28 @@ main {
     flex: 1 0 auto;
 }
 
-.nav-bar-fixed{
-    color: #ad1457 pink darken-1;
+.navbar {
+  background-color: #D0F4DE;
 }
 
-.page-footer{
-    color: #880e4f pink darken-4;
+.navbar-menu ul {
+  margin-top: 5px;
+}
+
+footer {
+  height: 50px;
+  position: relative;
+  bottom: -24px;
+  width: 100%;
+  background-color: #D0F4DE;
+}
+
+#footleft {
+  margin-left: 10px;
+}
+
+#footright {
+  margin-right: 10px;
 }
 
 .flex-container {
@@ -24,6 +40,24 @@ main {
 #cakeImage {
   max-width: 250px;
   height: 200px;
+}
+
+.sect {
+  height: 500px;
+  max-width: 100%;
+  margin-bottom: 50px;
+  border-radius: 2%/5%;
+}
+
+#splash {
+  background-image: url("../images/cupcake-splash-cropped.jpeg");
+  background-size: contain;
+}
+
+.splash-text {
+  position: relative;
+  text-align: center;
+  top: 50%;
 }
 
 .modal {
@@ -62,3 +96,5 @@ main {
     text-decoration: none;
     cursor: pointer;
   }
+
+

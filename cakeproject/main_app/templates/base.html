@@ -15,24 +15,25 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 </head>
 <body>
-    <header class="nav-bar fixed">
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-                <ul class="left brand-logo">
-                    <li><a href ="{% url 'home' %}" >&nbsp;&nbsp;Home</a></li>
-                </ul>
-                
-                <ul class="right">
-                    <li><a href ="{% url 'index' %}">View All Cakes</a></li>
+    <header class="nav-head">
+        <nav class="navbar">
+            <div class="navbar-menu">
+                <ul class="navbar-start">
+                    <li><a href ="{% url 'index' %}" class="navbar-item">View All Cakes</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href ="{% url 'cakes_create' %}" class="right">Add a Cake</a></li>
-                    <li></li>
-                    <li>Hi there {{user.username}}</li>
-                    <li><a href="{% url 'password_change' %}">Change Password</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href ="{% url 'cakes_create' %}" class="navbar-item">Add a Cake</a></li>
+                </ul>
+
+                <ul class="navbar-end">
+                    <li><p  class="navbar-item">Hi there, {{user.username}}!</p></li>
+                    <li><a href="{% url 'password_change' %}" class="navbar-item">Change Password</a></li>
+                    <li><a href="{% url 'logout' %}" class="navbar-item">Log Out</a></li>
+                </ul>
                 {% else %}
-                    <li><a href ="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href ="{% url 'login' %}">Log In</a></li>
+                </ul>
+                <ul class="navbar-end">
+                    <li><a href ="{% url 'signup' %}" class="navbar-item">Sign Up</a></li>
+                    <li><a href ="{% url 'login' %}"  class="navbar-item">Log In</a></li>
                 {% endif %}  
                 </ul>
             </div>
@@ -42,19 +43,25 @@
 
     {% if messages %}
         {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="margin: auto;">{{ message }}</p>
         {% endfor %}
     {% endif %}
     
-    <main class="container">
+    <main class="section">
         {% block content %}
 
         {% endblock %}
     </main>
 
-    <footer class="page-footer">
-        <div class="right">
-            All Rights Reserved, &nbsp; 2022 Cakes Unlimited
+    <footer class="level">
+        <div id="footleft">
+            All Rights Reserved, &copy; 2022 Marc Usher, Richard Afrane-Kesey, Chris Ailey
+        </div>
+        <div id="footright">
+            Check us out on GitHub:
+            <a href="https://git.generalassemb.ly/marc/">Marc</a> |
+            <a href="https://git.generalassemb.ly/rakitent/">Richard</a> |
+            <a href="https://git.generalassemb.ly/cailey90/">Chris</a>
         </div>
 
     </footer>
