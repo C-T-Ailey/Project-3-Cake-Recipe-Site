@@ -2,10 +2,12 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    
 }
 
 main {
     flex: 1 0 auto;
+    /* background-color: #E4C1F9; */
 }
 
 .navbar {
@@ -43,13 +45,22 @@ footer {
 }
 
 .flex-container {
-   display: flex; 
-   justify-content: space-between;
+  display: flex; 
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-#cakeImage {
-  max-width: 250px;
-  height: 200px;
+.pagination-container {
+  display: flex;
+}
+
+.section--form {
+  background-color: #E4C1F9;
+}
+
+.cake-index {
+  display: flex;
+  flex-direction: row;
 }
 
 .sect {
