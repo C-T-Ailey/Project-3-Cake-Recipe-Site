@@ -54,7 +54,6 @@ footer {
   display: flex;
 }
 
-<<<<<<< HEAD
 .section--form {
   background-color: #E4C1F9;
 }
@@ -64,7 +63,6 @@ footer {
   flex-direction: row;
 }
 
-=======
 .sect {
   height: 500px;
   max-width: 100%;
@@ -86,7 +84,6 @@ footer {
   text-align: center;
   top: 50%;
 }
->>>>>>> 03bb3590164c89c83e8a4db8504faf59565fc460
 
 .modal {
     display: none; /* Hidden by default */
