@@ -10,12 +10,38 @@ main {
     /* background-color: #E4C1F9; */
 }
 
-.nav-bar-fixed{
-    color: #ad1457 pink darken-1;
+.navbar {
+  background-color: #D0F4DE;
 }
 
-.page-footer{
-    color: #880e4f pink darken-4;
+.navbar-menu {
+  margin-top: 5px;
+}
+
+.greeting {
+  pointer-events: none;
+}
+
+#head-title {
+  position: relative;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+}
+
+footer {
+  height: 50px;
+  position: relative;
+  bottom: -24px;
+  width: 100%;
+  background-color: #D0F4DE;
+}
+
+#footleft {
+  margin-left: 10px;
+}
+
+#footright {
+  margin-right: 10px;
 }
 
 .flex-container {
@@ -28,6 +54,7 @@ main {
   display: flex;
 }
 
+<<<<<<< HEAD
 .section--form {
   background-color: #E4C1F9;
 }
@@ -37,6 +64,29 @@ main {
   flex-direction: row;
 }
 
+=======
+.sect {
+  height: 500px;
+  max-width: 100%;
+  margin-bottom: 50px;
+  border-radius: 2%/5%;
+}
+
+.cont1 {
+  height: 500px
+}
+
+#splash {
+  background-image: url("../images/cupcake-splash-cropped.jpeg");
+  background-size: contain;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  top: 50%;
+}
+>>>>>>> 03bb3590164c89c83e8a4db8504faf59565fc460
 
 .modal {
     display: none; /* Hidden by default */
@@ -74,3 +124,5 @@ main {
     text-decoration: none;
     cursor: pointer;
   }
+
+

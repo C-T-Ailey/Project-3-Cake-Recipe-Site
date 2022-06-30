@@ -15,26 +15,33 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
 </head>
 <body>
-    <header class="nav-bar fixed">
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-                <ul class="left brand-logo">
-                    <li><a href ="{% url 'home' %}" >&nbsp;&nbsp;Home</a></li>
-                </ul>
+    <header class="nav-head">
+        <nav class="navbar">
+            <div class="navbar-menu content">
+                <div class="navbar-start">
+                    <a href ="{% url 'index' %}" class="navbar-item">View All Cakes</a>                    
+                {% if user.is_authenticated %}                   
+                    <a href ="{% url 'cakes_create' %}" class="navbar-item">Add a Cake</a>                                       
+                </div>
                 
-                <ul class="right">
-                    <li><a href ="{% url 'index' %}">View All Cakes</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href ="{% url 'cakes_create' %}" class="right">Add a Cake</a></li>
-                    <li></li>
-                    <li>Hi there {{user.username}}</li>
-                    <li><a href="{% url 'password_change' %}">Change Password</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                
+                    <h1 id="head-title" class="navbar-item">Cake Sera Sera</h1>
+                
+
+                <div class="navbar-end">
+                    <a class="navbar-item greeting">Hi there, {{user.username}}!</a>
+                    <a href="{% url 'password_change' %}" class="navbar-item">Change Password</a>
+                    <a href="{% url 'logout' %}" class="navbar-item">Log Out</a>
                 {% else %}
-                    <li><a href ="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href ="{% url 'login' %}">Log In</a></li>
+                </div>
+
+                <h1 id="head-title">Cake Sera Sera</h1>
+
+                <div class="navbar-end">
+                    <a href ="{% url 'signup' %}" class="navbar-item">Sign Up</a>
+                    <a href ="{% url 'login' %}"  class="navbar-item">Log In</a>
                 {% endif %}  
-                </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -42,7 +49,7 @@
 
     {% if messages %}
         {% for message in messages %}
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="margin: auto;">{{ message }}</p>
         {% endfor %}
     {% endif %}
     
@@ -52,9 +59,15 @@
         {% endblock %}
     </main>
 
-    <footer class="page-footer">
-        <div class="right">
-            All Rights Reserved, &nbsp; 2022 Cakes Unlimited
+    <footer class="level">
+        <div id="footleft">
+            All Rights Reserved, &copy; 2022 Marc Usher, Richard Afrane-Kesey, Chris Ailey
+        </div>
+        <div id="footright">
+            Check us out on GitHub:
+            <a href="https://git.generalassemb.ly/marc/">Marc</a> |
+            <a href="https://git.generalassemb.ly/rakitent/">Richard</a> |
+            <a href="https://git.generalassemb.ly/cailey90/">Chris</a>
         </div>
 
     </footer>

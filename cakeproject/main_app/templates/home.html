@@ -5,7 +5,32 @@ Cakes cakes Cakes
 {% endblock %}
 
 {% block content %}
-<h1> WELCOME TO CAKES UNLIMITED</h1>
+
+{% if user.is_authenticated %}
+
+<section class="sect" id="splash">
+    
+</section>
+
+<section class="sect" style="background-color: #F4D2DB">
+    <div class="container">
+        <div class="cont1">
+            <h1 class="title">Add a cake and get involved!</h1>
+        </div>
+    </div>
+</section>
+
+<section class="sect" style="background-color: #F4D2F3">
+    <div class="container">
+        <div class="cont1">
+            <h1 class="title">Browse cakes and submit your own recipes!</h1>
+        </div>
+    </div>
+</section>
+
+{% else %}
+
+<h1> WELCOME TO CAKES UNLIMITED </h1>
 <hr>
 <p>
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, deleniti temporibus laboriosam reiciendis ratione omnis porro maxime cupiditate consectetur suscipit veniam veritatis unde necessitatibus incidunt. Iusto, neque doloremque. Fuga, officiis?
@@ -14,5 +39,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, deleniti tem
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ea deleniti explicabo dolorem quas quidem omnis, quam sint enim necessitatibus molestias ipsa, dolores perferendis velit ab accusamus labore maiores non.
 
 </p>
+
+{% endif %}
 
 {% endblock%}
