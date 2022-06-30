@@ -59,13 +59,22 @@ footer {
   border-radius: 2%/5%;
 }
 
+@media(max-width: 768px){
+.sect {
+  height: 250px;
+  max-width: 100%;
+  margin-bottom: 50px;
+  border-radius: 2%/5%;
+}
+}
 .cont1 {
   height: 500px
 }
 
 #splash {
   background-image: url("../images/cupcake-splash-cropped.jpeg");
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .title {
